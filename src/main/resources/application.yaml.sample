@@ -1,0 +1,13 @@
+discordbot:
+  token: 'discord bot token here'
+  default-prefix: '?'
+  owner-id: 'your user id'
+
+database:
+  vendor: mysql
+  driver: com.mysql.cj.jdbc.Driver
+  host: sample.com
+  database: sample database
+  user: sample user
+  password: sample password
+  pool-size: 10
