@@ -1,5 +1,7 @@
 package com.it_finne.discordbot_template_for_kotlin.conf
 
+import ch.qos.logback.classic.LoggerContext
+import ch.qos.logback.classic.joran.JoranConfigurator
 import com.it_finne.discordbot_template_for_kotlin.ApplicationMode
 import com.it_finne.discordbot_template_for_kotlin.errors.IllegalEnvironmentException
 import com.jagrosh.jdautilities.command.Command
@@ -7,6 +9,7 @@ import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.sql.Database
 import org.reflections.Reflections
+import org.slf4j.LoggerFactory
 
 private const val ENVIRONMENT_NAME = "DQX_DRAKEE_ENVIRONMENT"
 private const val ENVIRONMENT_DEFAULT_VALUE = "development"
@@ -19,9 +22,24 @@ object Application {
 
     init {
         this.applicationMode = this.getApplicationModeFromEnvironment()
+
+        configureLogging()
+
         this.configuration = Configuration.load(applicationMode)
         this.database = this.getDatabaseFromConfiguration()
         this.commands = this.getCommandsFromConfiguration()
+    }
+
+    private fun configureLogging() {
+        val loggerContext: LoggerContext = (LoggerFactory.getILoggerFactory() as LoggerContext).apply {
+            reset()
+        }
+
+        val filename: String = "/logback-${this.applicationMode.value}.xml"
+        JoranConfigurator().apply {
+            context = loggerContext
+            doConfigure(Application::class.java.getResource(filename))
+        }
     }
 
     private fun getApplicationModeFromEnvironment(): ApplicationMode {
