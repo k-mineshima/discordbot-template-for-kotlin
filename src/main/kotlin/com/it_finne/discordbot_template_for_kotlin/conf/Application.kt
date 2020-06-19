@@ -9,29 +9,43 @@ import org.jetbrains.exposed.sql.Database
 import org.reflections.Reflections
 
 object Application {
+    private const val ENVIRONMENT_NAME = "DQX_DRAKEE_ENVIRONMENT"
+    private const val ENVIRONMENT_DEFAULT_VALUE = "development"
+
     val applicationMode: ApplicationMode
     val configuration: Configuration
     val database: Database
     val commands: Array<Command>
 
     init {
-        val environment: String = System.getenv("DQX_DRAKEE_ENVIRONMENT") ?: "development"
-        applicationMode = ApplicationMode.get(environment)
-            ?: throw IllegalEnvironmentException("invalid environment: ${environment}. please choice production, staging or development.")
-        configuration = Configuration.load(applicationMode)
+        this.applicationMode = this.getApplicationModeFromEnvironment()
+        this.configuration = Configuration.load(applicationMode)
+        this.database = this.getDatabaseFromConfiguration()
+        this.commands = this.getCommandsFromConfiguration()
+    }
 
-        val hikariConfig = HikariConfig().apply {
+    private fun getApplicationModeFromEnvironment(): ApplicationMode {
+        val environmentValue: String = System.getenv(this.ENVIRONMENT_NAME) ?: this.ENVIRONMENT_DEFAULT_VALUE
+
+        return ApplicationMode.get(environmentValue) ?: throw IllegalEnvironmentException(environmentValue)
+    }
+
+    private fun getDatabaseFromConfiguration(): Database {
+        val hikariConfig: HikariConfig = HikariConfig().apply {
             jdbcUrl = "jdbc:${configuration.database.vendor}://${configuration.database.host}/${configuration.database.database}"
             driverClassName = configuration.database.driver
             username = configuration.database.user
             password = configuration.database.password
             maximumPoolSize = configuration.database.poolSize
         }
-        this.database = Database.connect(HikariDataSource(hikariConfig))
 
-        val reflections: Reflections = Reflections(configuration.discordbot.commandsPackage)
+        return Database.connect(HikariDataSource(hikariConfig))
+    }
+
+    private fun getCommandsFromConfiguration(): Array<Command> {
+        val reflections: Reflections = Reflections(this.configuration.discordbot.commandsPackage)
         val commandClasses: Set<Class<*>> = reflections.getSubTypesOf(Command::class.java)
-        commands = commandClasses.map {
+        return commandClasses.map {
             it.getConstructor().newInstance() as Command
         }.toTypedArray()
     }
