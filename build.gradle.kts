@@ -62,8 +62,6 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0")
 
-    implementation("org.slf4j:slf4j-simple:1.7.25")
-
     implementation("org.jetbrains.exposed:exposed-core:0.25.1")
 
     implementation("org.jetbrains.exposed:exposed-dao:0.25.1")
@@ -77,6 +75,10 @@ dependencies {
     implementation("com.improve_future:harmonica:1.1.26")
 
     implementation("org.reflections:reflections:0.9.12")
+
+    implementation("io.github.microutils:kotlin-logging:1.7.10")
+
+    implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
 application {
