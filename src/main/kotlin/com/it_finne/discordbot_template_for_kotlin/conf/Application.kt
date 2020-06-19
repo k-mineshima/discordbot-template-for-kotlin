@@ -21,21 +21,21 @@ object Application {
     val commands: Array<Command>
 
     init {
-        this.applicationMode = this.getApplicationModeFromEnvironment()
-
-        configureLogging()
+        this.applicationMode = this.getApplicationModeFromEnvironment().apply {
+            configureLogging(this)
+        }
 
         this.configuration = Configuration.load(applicationMode)
         this.database = this.getDatabaseFromConfiguration()
         this.commands = this.getCommandsFromConfiguration()
     }
 
-    private fun configureLogging() {
+    private fun configureLogging(applicationMode: ApplicationMode) {
         val loggerContext: LoggerContext = (LoggerFactory.getILoggerFactory() as LoggerContext).apply {
             reset()
         }
 
-        val filename: String = "/logback-${this.applicationMode.value}.xml"
+        val filename: String = "/logback-${applicationMode.value}.xml"
         JoranConfigurator().apply {
             context = loggerContext
             doConfigure(Application::class.java.getResource(filename))
@@ -67,4 +67,5 @@ object Application {
             it.getConstructor().newInstance() as Command
         }.toTypedArray()
     }
+
 }
