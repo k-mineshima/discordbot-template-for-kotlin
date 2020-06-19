@@ -9,5 +9,7 @@ data class DiscordBot(
     @SerialName("default-prefix")
     val defaultPrefix: String,
     @SerialName("owner-id")
-    val ownerId: String
+    val ownerId: String,
+    @SerialName("commands-package")
+    val commandsPackage: String
 )

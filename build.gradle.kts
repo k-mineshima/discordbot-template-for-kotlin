@@ -75,6 +75,8 @@ dependencies {
     implementation("com.zaxxer:HikariCP:3.4.5")
 
     implementation("com.improve_future:harmonica:1.1.26")
+
+    implementation("org.reflections:reflections:0.9.12")
 }
 
 application {

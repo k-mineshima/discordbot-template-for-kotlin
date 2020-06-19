@@ -1,6 +1,5 @@
 package com.it_finne.discordbot_template_for_kotlin
 
-import com.it_finne.discordbot_template_for_kotlin.commands.Test
 import com.it_finne.discordbot_template_for_kotlin.conf.Application
 import com.jagrosh.jdautilities.command.CommandClient
 import com.jagrosh.jdautilities.command.CommandClientBuilder
@@ -18,7 +17,7 @@ class BOT {
             .setStatus(OnlineStatus.ONLINE)
             .setActivity(Activity.playing("!help"))
             .setOwnerId(Application.configuration.discordbot.ownerId)
-            .addCommands(Test())
+            .addCommands(*Application.commands)
             .build()
 
         this.discordbot = JDABuilder
