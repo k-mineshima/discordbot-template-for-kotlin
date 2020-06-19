@@ -8,10 +8,10 @@ import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.sql.Database
 import org.reflections.Reflections
 
-object Application {
-    private const val ENVIRONMENT_NAME = "DQX_DRAKEE_ENVIRONMENT"
-    private const val ENVIRONMENT_DEFAULT_VALUE = "development"
+private const val ENVIRONMENT_NAME = "DQX_DRAKEE_ENVIRONMENT"
+private const val ENVIRONMENT_DEFAULT_VALUE = "development"
 
+object Application {
     val applicationMode: ApplicationMode
     val configuration: Configuration
     val database: Database
@@ -25,7 +25,7 @@ object Application {
     }
 
     private fun getApplicationModeFromEnvironment(): ApplicationMode {
-        val environmentValue: String = System.getenv(this.ENVIRONMENT_NAME) ?: this.ENVIRONMENT_DEFAULT_VALUE
+        val environmentValue: String = System.getenv(ENVIRONMENT_NAME) ?: ENVIRONMENT_DEFAULT_VALUE
 
         return ApplicationMode.get(environmentValue) ?: throw IllegalEnvironmentException(environmentValue)
     }
