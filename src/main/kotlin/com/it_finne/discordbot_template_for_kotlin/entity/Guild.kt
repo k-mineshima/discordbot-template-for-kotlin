@@ -14,8 +14,8 @@ object Guilds: LongIdTable(name="guilds") {
     override val primaryKey = PrimaryKey(id)
 }
 
-class Guild(id: EntityID<Long>): LongEntity(id) {
-    companion object: LongEntityClass<Guild>(Guilds)
+class GuildRecord(id: EntityID<Long>): LongEntity(id) {
+    companion object: LongEntityClass<GuildRecord>(Guilds)
 
     var guildId: Long by Guilds.guildId
     var name: String by Guilds.name
