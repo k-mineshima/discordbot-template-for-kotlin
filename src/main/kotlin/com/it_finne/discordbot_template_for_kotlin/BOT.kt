@@ -2,6 +2,8 @@ package com.it_finne.discordbot_template_for_kotlin
 
 import com.it_finne.discordbot_template_for_kotlin.conf.Application
 import com.it_finne.discordbot_template_for_kotlin.listeners.CommandExceptionListener
+import com.it_finne.discordbot_template_for_kotlin.listeners.GuildJoinListener
+import com.it_finne.discordbot_template_for_kotlin.listeners.ReadyListener
 import com.jagrosh.jdautilities.command.CommandClient
 import com.jagrosh.jdautilities.command.CommandClientBuilder
 import mu.KLogger
@@ -35,7 +37,11 @@ class BOT {
 
         this.discordbot = JDABuilder
             .createDefault(Application.configuration.discordbot.token)
-            .addEventListeners(commandClient)
+            .addEventListeners(
+                commandClient,
+                GuildJoinListener(),
+                ReadyListener()
+            )
             .build()
     }
 }
