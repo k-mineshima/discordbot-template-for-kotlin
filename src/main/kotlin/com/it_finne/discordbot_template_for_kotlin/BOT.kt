@@ -19,11 +19,11 @@ class BOT {
         logger.info { "the application has started in '${Application.applicationMode}' mode." }
 
         val commandClient: CommandClient = CommandClientBuilder()
-            .setPrefix(Application.configuration.discordbot.defaultPrefix)
             .setStatus(OnlineStatus.ONLINE)
             .setActivity(Activity.playing("!help"))
             .setOwnerId(Application.configuration.discordbot.ownerId)
             .addCommands(*Application.commands)
+            .setGuildSettingsManager(GuildSettingsManager())
             .build()
 
         this.discordbot = JDABuilder
