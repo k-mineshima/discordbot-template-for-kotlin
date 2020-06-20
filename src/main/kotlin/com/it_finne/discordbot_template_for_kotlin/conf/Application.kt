@@ -11,7 +11,7 @@ import org.jetbrains.exposed.sql.Database
 import org.reflections.Reflections
 import org.slf4j.LoggerFactory
 
-private const val ENVIRONMENT_NAME = "DQX_DRAKEE_ENVIRONMENT"
+private const val ENVIRONMENT_NAME = "ENVIRONMENT"
 private const val ENVIRONMENT_DEFAULT_VALUE = "development"
 
 object Application {
