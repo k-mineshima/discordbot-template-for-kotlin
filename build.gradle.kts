@@ -83,7 +83,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = "com.it_finne.dqx_drakee.AppKt"
+    mainClassName = "com.it_finne.discordbot_template_for_kotlin.AppKt"
 }
 
 tasks.withType<KotlinCompile> {
@@ -92,4 +92,4 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-extensions.extraProperties["migrationPackage"] = "com.it_finne.dqx_drakee.db"
+extensions.extraProperties["migrationPackage"] = "com.it_finne.discordbot_template_for_kotlin.db"
