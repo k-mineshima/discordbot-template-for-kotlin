@@ -1,6 +1,7 @@
 package com.it_finne.discordbot_template_for_kotlin
 
 import com.it_finne.discordbot_template_for_kotlin.conf.Application
+import com.it_finne.discordbot_template_for_kotlin.listeners.CommandExceptionListener
 import com.jagrosh.jdautilities.command.CommandClient
 import com.jagrosh.jdautilities.command.CommandClientBuilder
 import mu.KLogger
@@ -24,6 +25,8 @@ class BOT {
             .setOwnerId(Application.configuration.discordbot.ownerId)
             .addCommands(*Application.commands)
             .setGuildSettingsManager(GuildSettingsManager())
+            .setEmojis(":thumbsup:", ":exclamation:", ":x:")
+            .setListener(CommandExceptionListener())
             .build()
 
         this.discordbot = JDABuilder
