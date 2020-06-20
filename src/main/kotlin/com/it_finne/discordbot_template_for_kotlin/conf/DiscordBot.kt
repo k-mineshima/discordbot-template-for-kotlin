@@ -11,5 +11,7 @@ data class DiscordBot(
     @SerialName("owner-id")
     val ownerId: String,
     @SerialName("commands-package")
-    val commandsPackage: String
+    val commandsPackage: String,
+    @SerialName("emojis")
+    val emojis: Emojis
 )

@@ -25,7 +25,11 @@ class BOT {
             .setOwnerId(Application.configuration.discordbot.ownerId)
             .addCommands(*Application.commands)
             .setGuildSettingsManager(GuildSettingsManager())
-            .setEmojis(":thumbsup:", ":exclamation:", ":x:")
+            .setEmojis(
+                Application.configuration.discordbot.emojis.success,
+                Application.configuration.discordbot.emojis.warning,
+                Application.configuration.discordbot.emojis.error
+            )
             .setListener(CommandExceptionListener())
             .build()
 
