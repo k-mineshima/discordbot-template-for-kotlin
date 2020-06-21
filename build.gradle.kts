@@ -6,6 +6,12 @@
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+/* =============== PROJECT SETTINGS =============== */
+val projectPackage: String = "com.it_finne.discordbot_template_for_kotlin"
+val projectMainClass: String = "AppKt"
+val migrationPackage: String = "${projectPackage}.db"
+/* ================================================ */
+
 buildscript {
     val kotlinVersion by extra { "1.3.20"}
 
@@ -83,7 +89,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = "com.it_finne.discordbot_template_for_kotlin.AppKt"
+    mainClassName = "${projectPackage}.${projectMainClass}"
 }
 
 tasks.withType<KotlinCompile> {
@@ -92,4 +98,4 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-extensions.extraProperties["migrationPackage"] = "com.it_finne.discordbot_template_for_kotlin.db"
+extensions.extraProperties["migrationPackage"] = migrationPackage
