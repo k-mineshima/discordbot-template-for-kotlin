@@ -2,6 +2,7 @@ package com.it_finne.discordbot_template_for_kotlin.commands
 
 import com.it_finne.discordbot_template_for_kotlin.entity.GuildRecord
 import com.it_finne.discordbot_template_for_kotlin.entity.GuildRecords
+import com.it_finne.discordbot_template_for_kotlin.errors.CommandWarningException
 import com.jagrosh.jdautilities.command.Command
 import com.jagrosh.jdautilities.command.CommandEvent
 import net.dv8tion.jda.api.entities.Guild
@@ -14,10 +15,15 @@ class Prefix: Command() {
 
     override fun execute(event: CommandEvent) {
         val guild: Guild = event.guild
+        val newPrefix: String = event.args.trim()
+
+        if (newPrefix.contains(Regex("\\p{javaWhitespace}"))) {
+            throw CommandWarningException("thr prefix cannot contain blanks.")
+        }
 
         transaction {
             GuildRecord.find { GuildRecords.guildId eq guild.idLong }.first().apply {
-                prefix = event.args
+                prefix = newPrefix
             }
         }
         event.reply("the prefix has been updated successfully.")
