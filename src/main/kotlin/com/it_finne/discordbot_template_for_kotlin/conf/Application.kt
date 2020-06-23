@@ -50,7 +50,7 @@ object Application {
 
     private fun getDatabaseFromConfiguration(): Database {
         val hikariConfig: HikariConfig = HikariConfig().apply {
-            jdbcUrl = "jdbc:${configuration.database.vendor}://${configuration.database.host}/${configuration.database.database}"
+            jdbcUrl = "jdbc:${configuration.database.vendor}://${configuration.database.host}/${configuration.database.database}?serverTimezone=${configuration.database.timezone}"
             driverClassName = configuration.database.driver
             username = configuration.database.user
             password = configuration.database.password
