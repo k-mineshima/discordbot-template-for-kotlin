@@ -11,6 +11,7 @@ data class Database(
     val database: String,
     val user: String,
     val password: String,
+    val timezone: String,
     @SerialName("pool-size")
     val poolSize: Int
 )

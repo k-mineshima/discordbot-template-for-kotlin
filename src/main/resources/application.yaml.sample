@@ -15,4 +15,5 @@ database:
   database: sample database
   user: sample user
   password: sample password
+  timezone: JST
   pool-size: 10
