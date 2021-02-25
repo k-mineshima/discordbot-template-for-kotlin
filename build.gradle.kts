@@ -9,23 +9,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 /* =============== PROJECT SETTINGS =============== */
 val projectPackage: String = "com.it_finne.discordbot_template_for_kotlin"
 val projectMainClass: String = "AppKt"
-val migrationPackage: String = "${projectPackage}.db"
 /* ================================================ */
-
-buildscript {
-    val kotlinVersion by extra { "1.3.20"}
-
-    repositories {
-        jcenter()
-        maven {
-            url = uri("https://jitpack.io")
-        }
-    }
-    dependencies {
-        classpath(group = "org.jetbrains.kotlin", name = "kotlin-script-util", version = kotlinVersion)
-        classpath("com.improve_future:harmonica:1.1.26")
-    }
-}
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
@@ -36,15 +20,10 @@ plugins {
     application
 }
 
-apply(plugin = "jarmonica")
-
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
-    maven {
-        url = uri("https://jitpack.io")
-    }
 }
 
 dependencies {
@@ -80,8 +59,6 @@ dependencies {
 
     implementation("com.zaxxer:HikariCP:3.4.5")
 
-    implementation("com.improve_future:harmonica:1.1.26")
-
     implementation("org.reflections:reflections:0.9.12")
 
     implementation("io.github.microutils:kotlin-logging:1.7.10")
@@ -109,5 +86,3 @@ tasks.withType<Jar> {
         configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
     })
 }
-
-extensions.extraProperties["migrationPackage"] = migrationPackage
