@@ -14,6 +14,7 @@ val projectMainClass: String = "AppKt"
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.3.72"
+    id("org.flywaydb.flyway") version "7.5.4"
     kotlin("plugin.serialization") version "1.3.70"
 
     // Apply the application plugin to add support for building a CLI application.
@@ -85,4 +86,10 @@ tasks.withType<Jar> {
     from({
         configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
     })
+}
+
+flyway {
+    url = System.getenv("FLYWAY_URL")
+    user = System.getenv("FLYWAY_USER")
+    password = System.getenv("FLYWAY_PASSWORD")
 }
