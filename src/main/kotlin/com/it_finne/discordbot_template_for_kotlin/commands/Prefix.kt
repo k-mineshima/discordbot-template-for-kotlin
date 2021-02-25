@@ -18,7 +18,7 @@ class Prefix: Command() {
         val newPrefix: String = event.args.trim()
 
         if (newPrefix.contains(Regex("\\p{javaWhitespace}"))) {
-            throw CommandWarningException("thr prefix cannot contain blanks.")
+            throw CommandWarningException("the prefix cannot contain blanks.")
         }
 
         transaction {
@@ -26,6 +26,6 @@ class Prefix: Command() {
                 prefix = newPrefix
             }
         }
-        event.reply("the prefix has been updated successfully.")
+        event.replySuccess("the prefix has been updated successfully.")
     }
 }
