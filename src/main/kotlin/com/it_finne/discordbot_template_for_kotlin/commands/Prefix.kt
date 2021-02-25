@@ -17,6 +17,10 @@ class Prefix: Command() {
         val guild: Guild = event.guild
         val newPrefix: String = event.args.trim()
 
+        if (newPrefix.isEmpty()) {
+            throw CommandWarningException("no prefix is specified.")
+        }
+
         if (newPrefix.contains(Regex("\\p{javaWhitespace}"))) {
             throw CommandWarningException("the prefix cannot contain blanks.")
         }
