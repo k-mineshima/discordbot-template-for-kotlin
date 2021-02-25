@@ -74,6 +74,8 @@ dependencies {
 
     implementation("org.jetbrains.exposed:exposed-jdbc:0.25.1")
 
+    implementation("org.jetbrains.exposed:exposed-java-time:0.29.1")
+
     implementation("mysql:mysql-connector-java:8.0.20")
 
     implementation("com.zaxxer:HikariCP:3.4.5")
