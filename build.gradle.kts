@@ -60,8 +60,6 @@ dependencies {
 
     implementation("com.zaxxer:HikariCP:3.4.5")
 
-    implementation("org.reflections:reflections:0.9.12")
-
     implementation("io.github.microutils:kotlin-logging:1.7.10")
 
     implementation("ch.qos.logback:logback-classic:1.2.3")

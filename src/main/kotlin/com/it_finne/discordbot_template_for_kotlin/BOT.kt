@@ -1,5 +1,6 @@
 package com.it_finne.discordbot_template_for_kotlin
 
+import com.it_finne.discordbot_template_for_kotlin.commands.Prefix
 import com.it_finne.discordbot_template_for_kotlin.conf.Application
 import com.it_finne.discordbot_template_for_kotlin.listeners.CommandExceptionListener
 import com.it_finne.discordbot_template_for_kotlin.listeners.GuildJoinListener
@@ -25,7 +26,9 @@ class BOT {
             .setStatus(OnlineStatus.ONLINE)
             .setActivity(Activity.playing("!help"))
             .setOwnerId(Application.configuration.discordbot.ownerId)
-            .addCommands(*Application.commands)
+            .addCommands(
+                Prefix()
+            )
             .setGuildSettingsManager(GuildSettingsManager())
             .setEmojis(
                 Application.configuration.discordbot.emojis.success,

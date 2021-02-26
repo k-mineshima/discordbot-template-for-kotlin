@@ -4,11 +4,9 @@ import ch.qos.logback.classic.LoggerContext
 import ch.qos.logback.classic.joran.JoranConfigurator
 import com.it_finne.discordbot_template_for_kotlin.ApplicationMode
 import com.it_finne.discordbot_template_for_kotlin.errors.IllegalEnvironmentException
-import com.jagrosh.jdautilities.command.Command
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.sql.Database
-import org.reflections.Reflections
 import org.slf4j.LoggerFactory
 
 private const val ENVIRONMENT_NAME = "ENVIRONMENT"
@@ -18,7 +16,6 @@ object Application {
     val applicationMode: ApplicationMode
     val configuration: Configuration
     val database: Database
-    val commands: Array<Command>
 
     init {
         this.applicationMode = this.getApplicationModeFromEnvironment().apply {
@@ -27,7 +24,6 @@ object Application {
 
         this.configuration = Configuration.load(applicationMode)
         this.database = this.getDatabaseFromConfiguration()
-        this.commands = this.getCommandsFromConfiguration()
     }
 
     private fun configureLogging(applicationMode: ApplicationMode) {
@@ -59,13 +55,4 @@ object Application {
 
         return Database.connect(HikariDataSource(hikariConfig))
     }
-
-    private fun getCommandsFromConfiguration(): Array<Command> {
-        val reflections: Reflections = Reflections(this.configuration.discordbot.commandsPackage)
-        val commandClasses: Set<Class<*>> = reflections.getSubTypesOf(Command::class.java)
-        return commandClasses.map {
-            it.getConstructor().newInstance() as Command
-        }.toTypedArray()
-    }
-
 }
