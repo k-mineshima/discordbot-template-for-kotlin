@@ -7,4 +7,4 @@
  * in the user manual at https://docs.gradle.org/6.5/userguide/multi_project_builds.html
  */
 
-rootProject.name = "discordbot-template-for-kotlin"
+rootProject.name = "{PROJECT_NAME_LOWER_CASE}"

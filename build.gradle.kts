@@ -7,7 +7,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /* =============== PROJECT SETTINGS =============== */
-val projectPackage: String = "com.it_finne.discordbot_template_for_kotlin"
+val projectPackage: String = "com.it_finne.{PROJECT_NAME_LOWER_CASE}"
 val projectMainClass: String = "AppKt"
 /* ================================================ */
 
@@ -87,7 +87,7 @@ tasks.withType<Jar> {
 }
 
 flyway {
-    url = System.getenv("FLYWAY_URL")
-    user = System.getenv("FLYWAY_USER")
-    password = System.getenv("FLYWAY_PASSWORD")
+    url = System.getenv("{PROJECT_NAME_UPPER_CASE}_FLYWAY_URL")
+    user = System.getenv("{PROJECT_NAME_UPPER_CASE}_FLYWAY_USER")
+    password = System.getenv("{PROJECT_NAME_UPPER_CASE}_FLYWAY_PASSWORD")
 }
