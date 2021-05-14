@@ -22,4 +22,5 @@ cp ./src/main/resources/application.yaml.sample ./src/main/resources/application
 
 rm ./init.sh
 
-mv ../discordbot-template-for-kotlin ../"$PROJECT_NAME_LOWER_CASE"
+cd ../
+mv discordbot-template-for-kotlin "$PROJECT_NAME_LOWER_CASE"
