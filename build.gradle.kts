@@ -13,9 +13,9 @@ val projectMainClass: String = "AppKt"
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.3.72"
+    id("org.jetbrains.kotlin.jvm") version "1.5.0"
     id("org.flywaydb.flyway") version "7.5.4"
-    kotlin("plugin.serialization") version "1.3.70"
+    kotlin("plugin.serialization") version "1.5.0"
 
     // Apply the application plugin to add support for building a CLI application.
     application
@@ -46,7 +46,7 @@ dependencies {
 
     implementation("com.charleskorn.kaml:kaml:0.17.0")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
 
     implementation("org.jetbrains.exposed:exposed-core:0.25.1")
 
