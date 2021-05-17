@@ -12,12 +12,9 @@ val projectMainClass: String = "AppKt"
 /* ================================================ */
 
 plugins {
-    // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.5.0"
-    id("org.flywaydb.flyway") version "7.5.4"
-    kotlin("plugin.serialization") version "1.5.0"
-
-    // Apply the application plugin to add support for building a CLI application.
+    jvm
+    kotlinSerialization
+    flyway
     application
 }
 
@@ -28,41 +25,22 @@ repositories {
 }
 
 dependencies {
-    // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-
-    // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
-    // Use the Kotlin test library.
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-
-    // Use the Kotlin JUnit integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
-
-    implementation("net.dv8tion:JDA:4.1.1_157")
-
-    implementation("com.jagrosh:jda-utilities:3.0.3")
-
-    implementation("com.charleskorn.kaml:kaml:0.17.0")
-
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
-
-    implementation("org.jetbrains.exposed:exposed-core:0.25.1")
-
-    implementation("org.jetbrains.exposed:exposed-dao:0.25.1")
-
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.25.1")
-
-    implementation("org.jetbrains.exposed:exposed-java-time:0.29.1")
-
-    implementation("mysql:mysql-connector-java:8.0.20")
-
-    implementation("com.zaxxer:HikariCP:3.4.5")
-
-    implementation("io.github.microutils:kotlin-logging:1.7.10")
-
-    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation(kotlinBom)
+    implementation(kotlinStdlibJdk8)
+    testImplementation(kotlinTest)
+    testImplementation(kotlinTestJUnit)
+    implementation(jda)
+    implementation(jdaUtilities)
+    implementation(kaml)
+    implementation(kotlinxSerializationJson)
+    implementation(exposedCore)
+    implementation(exposedDao)
+    implementation(exposedJdbc)
+    implementation(exposedJavaTime)
+    implementation(mysqlConnectorJava)
+    implementation(hikariCP)
+    implementation(kotlinLogging)
+    implementation(logbackClassic)
 }
 
 application {
