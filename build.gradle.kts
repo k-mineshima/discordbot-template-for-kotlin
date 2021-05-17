@@ -64,6 +64,10 @@ tasks.withType<Jar> {
     })
 }
 
+tasks.wrapper {
+    gradleVersion = GRADLE_VERSION
+}
+
 flyway {
     url = System.getenv("{PROJECT_NAME_UPPER_CASE}_FLYWAY_URL")
     user = System.getenv("{PROJECT_NAME_UPPER_CASE}_FLYWAY_USER")

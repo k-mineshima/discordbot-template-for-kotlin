@@ -1,5 +1,6 @@
 object Versions {
-    private const val KOTLIN_VERSION: String = "1.5.0"
+    const val GRADLE_VERSION: String = "7.0.2"
+    const val KOTLIN_VERSION: String = "1.5.0"
 
     object Plugin {
         const val KOTLIN: String = KOTLIN_VERSION
