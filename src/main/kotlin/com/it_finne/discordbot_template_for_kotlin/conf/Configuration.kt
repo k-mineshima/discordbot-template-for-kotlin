@@ -12,7 +12,7 @@ data class Configuration(
     companion object {
         fun load(applicationMode: ApplicationMode): Configuration {
             val filename = "/application-${applicationMode.value}.yaml"
-            return Yaml.default.parse(
+            return Yaml.default.decodeFromString(
                 serializer(),
                 Configuration::class.java.getResource(filename).readText()
             )

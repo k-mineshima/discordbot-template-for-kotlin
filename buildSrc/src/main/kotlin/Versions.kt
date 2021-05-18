@@ -11,7 +11,7 @@ object Versions {
         const val KOTLIN: String = KOTLIN_VERSION
         const val JDA: String = "4.1.1_157"
         const val JDA_UTILITIES: String = "3.0.3"
-        const val KAML: String = "0.17.0"
+        const val KAML: String = "0.33.0"
         const val KOTLINX_SERIALIZATION_JSON: String = "1.2.1"
         const val EXPOSED: String = "0.25.1"
         const val EXPOSED_JAVA_TIME: String = "0.29.1"
