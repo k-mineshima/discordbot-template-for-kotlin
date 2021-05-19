@@ -1,4 +1,4 @@
-package com.it_finne.discordbot_template_for_kotlin.errors
+package com.it_finne.discordbot_template_for_kotlin.error
 
 import java.lang.RuntimeException
 

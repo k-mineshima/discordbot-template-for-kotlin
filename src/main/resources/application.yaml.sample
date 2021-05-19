@@ -2,7 +2,6 @@ discordbot:
   token: 'discord bot token here'
   default-prefix: '?'
   owner-id: 'your user id'
-  commands-package: com.sample.commands
   emojis:
     success: ':thumbsup:'
     warning: ':exclamation:'

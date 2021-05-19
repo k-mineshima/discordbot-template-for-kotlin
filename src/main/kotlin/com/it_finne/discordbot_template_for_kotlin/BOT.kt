@@ -1,10 +1,11 @@
 package com.it_finne.discordbot_template_for_kotlin
 
-import com.it_finne.discordbot_template_for_kotlin.commands.Prefix
-import com.it_finne.discordbot_template_for_kotlin.conf.Application
-import com.it_finne.discordbot_template_for_kotlin.listeners.CommandExceptionListener
-import com.it_finne.discordbot_template_for_kotlin.listeners.GuildJoinListener
-import com.it_finne.discordbot_template_for_kotlin.listeners.ReadyListener
+import com.it_finne.discordbot_template_for_kotlin.application.command.Prefix
+import com.it_finne.discordbot_template_for_kotlin.config.Application
+import com.it_finne.discordbot_template_for_kotlin.application.listener.CommandExceptionListener
+import com.it_finne.discordbot_template_for_kotlin.application.listener.GuildJoinListener
+import com.it_finne.discordbot_template_for_kotlin.application.listener.ReadyListener
+import com.it_finne.discordbot_template_for_kotlin.application.setting.GuildSettingsManager
 import com.jagrosh.jdautilities.command.CommandClient
 import com.jagrosh.jdautilities.command.CommandClientBuilder
 import mu.KLogger

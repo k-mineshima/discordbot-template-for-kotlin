@@ -40,6 +40,7 @@ dependencies {
     implementation(hikariCP)
     implementation(kotlinLogging)
     implementation(logbackClassic)
+    implementation(arrowCore)
 }
 
 application {

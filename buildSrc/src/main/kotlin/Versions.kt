@@ -18,5 +18,6 @@ object Versions {
         const val HIKARI_CP: String = "3.4.5"
         const val KOTLIN_LOGGING: String = "1.7.10"
         const val LOGBACK_CLASSIC: String = "1.2.3"
+        const val ARROW: String = "0.13.2"
     }
 }

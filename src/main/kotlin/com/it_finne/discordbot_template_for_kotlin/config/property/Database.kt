@@ -1,4 +1,4 @@
-package com.it_finne.discordbot_template_for_kotlin.conf
+package com.it_finne.discordbot_template_for_kotlin.config.property
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
