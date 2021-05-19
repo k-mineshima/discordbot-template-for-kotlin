@@ -20,3 +20,4 @@ val DependencyHandler.mysqlConnectorJava get() = "mysql:mysql-connector-java:${V
 val DependencyHandler.hikariCP get() = "com.zaxxer:HikariCP:${Versions.Dependency.HIKARI_CP}"
 val DependencyHandler.kotlinLogging get() = "io.github.microutils:kotlin-logging:${Versions.Dependency.KOTLIN_LOGGING}"
 val DependencyHandler.logbackClassic get() = "ch.qos.logback:logback-classic:${Versions.Dependency.LOGBACK_CLASSIC}"
+val DependencyHandler.arrowCore get() = "io.arrow-kt:arrow-core:${Versions.Dependency.ARROW}"

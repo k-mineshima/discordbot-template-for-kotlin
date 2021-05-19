@@ -1,16 +1,16 @@
-package com.it_finne.discordbot_template_for_kotlin.listeners
+package com.it_finne.discordbot_template_for_kotlin.application.listener
 
-import com.it_finne.discordbot_template_for_kotlin.errors.CommandErrorException
-import com.it_finne.discordbot_template_for_kotlin.errors.CommandWarningException
+import com.it_finne.discordbot_template_for_kotlin.error.CommandErrorException
+import com.it_finne.discordbot_template_for_kotlin.error.CommandWarningException
 import com.jagrosh.jdautilities.command.Command
 import com.jagrosh.jdautilities.command.CommandEvent
 import com.jagrosh.jdautilities.command.CommandListener
 import mu.KLogger
 import mu.KotlinLogging
 
-private val logger: KLogger = KotlinLogging.logger {}
-
-class CommandExceptionListener: CommandListener {
+class CommandExceptionListener(
+    private val logger: KLogger = KotlinLogging.logger {}
+): CommandListener {
     override fun onCommandException(event: CommandEvent, command: Command, throwable: Throwable) {
         when (throwable) {
             is CommandErrorException -> {
