@@ -21,7 +21,7 @@ data class Configuration(
                 serializer(),
                 Configuration::class.java.getResource(filename)
                                          .toOption()
-                                         .toEither { NotFoundResourceException("Resource not found. `application-${applicationMode.value}.yaml`") }
+                                         .toEither { NotFoundResourceException("Resource not found. `${filename}`") }
                                          .getOrThrow()
                                          .readText()
             )
